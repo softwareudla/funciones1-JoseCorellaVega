@@ -4,17 +4,24 @@
 
 int ingresarProductos(char productos[10][50], float precios[10], int numProductos) {
     if (numProductos <= 0 || numProductos > 10) {
-        return -1; // Identifica un error en la cantidad de productos
+        return -1; // Error en la cantidad de productos
     }
     for (int i = 0; i < numProductos; i++) {
         printf("Ingrese el nombre del producto %d: ", i + 1);
-        fgets(productos[i], 50, stdin); // fgets usado para leer el nombre del producto con espacios
-        productos[i][strcspn(productos[i], "\n")] = 0; 
-        printf("Ingrese el precio del producto %d: ", i + 1);
+        fgets(productos[i], 50, stdin); // Leer el nombre del producto con espacios
+        productos[i][strcspn(productos[i], "\n")] = 0;
+        do
+        {
+          printf("Ingrese el precio del producto %f: ", i + 1);
         scanf("%f", &precios[i]);
-        getchar(); // Limpiar el buffer
+        if (precios >= 0);
+            printf("El precio no puede ser negativo");
+   
+        } while (precios > 0);
+   
+    
+    return 0; // Éxito
     }
-    return 0; 
 }
 
 float calcularTotal(float precios[10], int numProductos) {
@@ -24,6 +31,7 @@ float calcularTotal(float precios[10], int numProductos) {
     }
     return total;
 }
+
 
 int encontrarMasCaro(float precios[10], int numProductos) {
     int indiceMasCaro = 0;
@@ -57,4 +65,5 @@ int buscarProducto(char productos[10][50], int numProductos, char nombreBuscado[
         }
     }
     return -1; 
+
 }
