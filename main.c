@@ -9,7 +9,7 @@ int main() {
     char nombreBuscado[50];
 
     // Imprimir un mensaje para solicitar el número de productos a ingresar
-    printf("¿Cuantos productos desea ingresar (maximo 10)? ");
+    printf("Cuantos productos desea ingresar (maximo 10)? ");
     scanf("%d", &numProductos);
     getchar(); 
     if (numProductos > 10) numProductos = 10;
