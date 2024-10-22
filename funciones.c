@@ -12,7 +12,7 @@ int ingresarProductos(char productos[10][50], float precios[10], int numProducto
         productos[i][strcspn(productos[i], "\n")] = 0;
         do
         {
-          printf("Ingrese el precio del producto: ", i + 1);
+          printf("Ingrese el precio del producto %i: ", i + 1);
         scanf("%f", &precios[i]);
         if (precios >= 0);
             printf("El precio no puede ser negativo");
