@@ -17,7 +17,7 @@ int ingresarProductos(char productos[10][50], float precios[10], int numProducto
         if (precios >= 0);
             printf("El precio no puede ser negativo");
    
-        } while (precios > 0);
+        } while (precios < 0);
    
     
     return 0; // Éxito
