@@ -2,10 +2,23 @@
 #include <string.h>
 #include "funciones.h"
 
+#include <stdio.h>
+#include <string.h>
+#include "funciones.h"
+
 int ingresarProductos(char productos[10][50], float precios[10], int numProductos) {
-    if (numProductos <= 0 || numProductos > 10) {
-        return -1; // Error en la cantidad de productos
-    }
+
+     do {
+        printf("Cuantos productos desea ingresar? (Maximo 10): ");
+        scanf("%d", &numProductos);
+        if (numProductos <= 0 || numProductos > 10 || numProductos > 20) {
+            printf("Numero de productos no valido. Ingrese un numero entre 1 y 10.\n");
+        }
+    } while (numProductos <= 0 || numProductos > 10);
+
+    // Limpiar el búfer de entrada después de scanf
+    while (getchar() != '\n');
+
     for (int i = 0; i < numProductos; i++) {
         printf("Ingrese el nombre del producto %d: ", i + 1);
         fgets(productos[i], 50, stdin); // Leer el nombre del producto con espacios
@@ -14,14 +27,17 @@ int ingresarProductos(char productos[10][50], float precios[10], int numProducto
         do {
             printf("Ingrese el precio del producto %d: ", i + 1);
             scanf("%f", &precios[i]);
-            if (precios[i] < 0) { // Cambiar precios a precios[i]
+            if (precios[i] < 0) { // Verificar si el precio es negativo
                 printf("El precio no puede ser negativo. Intente nuevamente.\n");
             }
-        } while (precios[i] < 0); // Cambiar precios a precios[i]
+            // Limpiar el búfer de entrada antes de la siguiente iteración
+            while (getchar() != '\n'); 
+        } while (precios[i] < 0); // Validar el precio nuevamente
     }
     
     return 0; // Éxito
 }
+
 
 float calcularTotal(float precios[10], int numProductos) {
     float total = 0;
