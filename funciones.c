@@ -54,7 +54,7 @@ int encontrarMasCaro(float precios[10], int numProductos) {
             indiceMasCaro = i;
         }
     }
-    return indiceMasCaro;
+    return indiceMasCaro; //regresa el mas caro
 }
 
 int encontrarMasBarato(float precios[10], int numProductos) {
